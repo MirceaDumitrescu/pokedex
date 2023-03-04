@@ -1,0 +1,16 @@
+<section class="page">
+  <div class="data-wrapper">
+    <div *ngFor="let pokemon of pokemons" class="data-wrapper__title">
+      <a [routerLink]="['/pokemon', pokemon.id]">
+        {{ pokemon.name }}
+      </a>
+    </div>
+  </div>
+  <div class="pagination">
+    Pokemons: {{ count }} TotalPages:{{ totalPages }} CurrentPage:
+    {{ currentPage }}
+
+    <button (click)="previousPage()">Prev</button>
+    <button (click)="nextPage()">Next</button>
+  </div>
+</section>

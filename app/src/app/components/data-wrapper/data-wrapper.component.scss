@@ -1,0 +1,43 @@
+.data-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-items: center;
+  font-size: 24px;
+  a {
+    color: #000000;
+    text-decoration: none;
+    &:hover {
+      color: #090909;
+      text-decoration: underline;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    font-size: 24px;
+    a {
+      color: #000000;
+      text-decoration: none;
+      &:hover {
+        color: #090909;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -1,0 +1,15 @@
+<section *ngIf="pokemon" class="pokemon">
+  <h2>{{ pokemon.name }}</h2>
+  <img [src]="pokemon.sprites.front_default" alt="pokemon.name" />
+  <div class="pokemon__info">
+    <p>Weight: {{ pokemon.weight }} kg</p>
+    <p>Height: {{ pokemon.height }} m</p>
+  </div>
+  <div class="back-btn">
+    <button routerLink="/">Back</button>
+  </div>
+</section>
+
+<section *ngIf="loading" class="loading">
+  <p>Loading...</p>
+</section>
