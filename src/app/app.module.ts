@@ -1,22 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DataWrapperComponent } from './components/data-wrapper/data-wrapper.component';
-import { PokemonComponent } from './components/pokemon/pokemon.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { DataWrapperComponent } from "./components/data-wrapper/data-wrapper.component";
+import { PokemonComponent } from "./components/pokemon/pokemon.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DataWrapperComponent,
-    PokemonComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent],
+	imports: [BrowserModule, AppRoutingModule],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
