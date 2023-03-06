@@ -14,6 +14,13 @@
 			<button (click)="removeFromFavorites(pokemon)">Remove from favorites</button>
 		</div>
 	</div>
+
+	<div *ngIf="!isFavoriteRxJs">
+		<button (click)="addToFavoritesRxjs(pokemon)">Add to favorites RXJS {{ favoritesRXJS.length }}</button>
+	</div>
+	<div *ngIf="isFavoriteRxJs">
+		<button (click)="removeFromFavoritesRxjs(pokemon)">Remove from favorites RJXS</button>
+	</div>
 </section>
 
 <section *ngIf="loading" class="loading">
