@@ -1,30 +1,26 @@
-import { createReducer, on } from "@ngrx/store";
+import { Action, createReducer, on } from "@ngrx/store";
 import { Pokemon } from "src/app/api/api.service";
-import { addToFavorite } from "../models/actions/pokemons.actions";
+import { FavoritePokemonAction, FavoritePokemonActionRemove } from "../models/actions/pokemons.actions";
 
-const initialState: Array<Pokemon> = [
-	{
-		abilities: [],
-		forms: [],
-		game_indices: [],
-		height: 0,
-		held_items: [],
-		id: 0,
-		is_default: true,
-		location_area_encounters: "",
-		moves: [],
-		name: "",
-		order: 0,
-		past_types: [],
-		species: [],
-		sprites: [],
-		stats: [],
-		types: [],
-		weight: 0,
-	},
-];
+const initialState: Array<Pokemon> = [];
 
-export const counterReducer = createReducer(
+const reducer = createReducer(
 	initialState,
-	on(addToFavorite, (state: Pokemon[]) => [...state, state])
+	on(FavoritePokemonAction, (state, action) => {
+		if (checkIfPokemonIsFavorite(state, action)) {
+			return state;
+		}
+		return [...state, action.payload];
+	}),
+	on(FavoritePokemonActionRemove, (state, action) => {
+		return state.filter((pokemon: Pokemon) => pokemon.id !== action.payload.id);
+	})
 );
+
+const checkIfPokemonIsFavorite = (state: Array<Pokemon>, action: any): boolean => {
+	return state.some((pokemon: Pokemon) => pokemon.id === action.payload.id);
+};
+
+export function PokemonReducer(state: Array<Pokemon> | undefined, action: Action) {
+	return reducer(state, action);
+}

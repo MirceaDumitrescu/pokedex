@@ -1,16 +1,7 @@
-<<<<<<< Updated upstream
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-favorites',
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
-})
-export class FavoritesComponent {
-
-=======
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
 import { Pokemon } from "src/app/api/api.service";
+import { FavoritePokemonActionRemove } from "src/app/store/models/actions/pokemons.actions";
 
 @Component({
 	selector: "app-favorites",
@@ -18,12 +9,15 @@ import { Pokemon } from "src/app/api/api.service";
 	styleUrls: ["./favorites.component.scss"],
 })
 export class FavoritesComponent {
-	private localStoragePokemon = localStorage.getItem("favorites");
-	public favorites: Pokemon[] = this.localStoragePokemon ? JSON.parse(this.localStoragePokemon) : [];
+	public favorites: Pokemon[] = [];
+
+	constructor(private store: Store<{ favorites: Pokemon[] }>) {
+		this.store.select("favorites").subscribe((favorites) => {
+			this.favorites = favorites;
+		});
+	}
 
 	public removeFromFavorites(pokemon: Pokemon): void {
-		this.favorites = this.favorites.filter((favorite: Pokemon) => favorite.id !== pokemon.id);
-		localStorage.setItem("favorites", JSON.stringify(this.favorites));
+		this.store.dispatch(FavoritePokemonActionRemove({ payload: pokemon }));
 	}
->>>>>>> Stashed changes
 }

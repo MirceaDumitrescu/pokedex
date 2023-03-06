@@ -1,18 +1,20 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Pokemon } from "src/app/api/api.service";
+import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
 
 @Component({
 	selector: "app-navbar",
 	templateUrl: "./navbar.component.html",
 	styleUrls: ["./navbar.component.scss"],
 })
-export class NavbarComponent {
-<<<<<<< Updated upstream
-	public favorites: Pokemon[] = [];
+export class NavbarComponent implements OnInit {
+	public favorites: number = 0;
+	constructor(private store: Store<{ favorites: Pokemon[] }>) {}
 
-	constructor() {}
-=======
-	private localStoragePokemon = localStorage.getItem("favorites");
-	public favorites: Pokemon[] = this.localStoragePokemon ? JSON.parse(this.localStoragePokemon).length : [];
->>>>>>> Stashed changes
+	ngOnInit(): void {
+		this.store.select("favorites").subscribe((favorites) => {
+			this.favorites = favorites.length;
+		});
+	}
 }

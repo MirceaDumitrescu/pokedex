@@ -6,17 +6,10 @@ import { AppComponent } from "./app.component";
 import { DataWrapperComponent } from "./components/data-wrapper/data-wrapper.component";
 import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-<<<<<<< Updated upstream
-import { FavoritesComponent } from './pages/favorites/favorites.component';
-
-@NgModule({
-	declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent],
-	imports: [BrowserModule, AppRoutingModule],
-=======
 import { FavoritesComponent } from "./pages/favorites/favorites.component";
 
-import { StoreModule } from "@ngrx/store";
 import { PokemonReducer } from "./store/reducers/favorites.reducer";
+import { StoreModule } from "@ngrx/store";
 
 @NgModule({
 	declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent],
@@ -27,7 +20,6 @@ import { PokemonReducer } from "./store/reducers/favorites.reducer";
 			favorites: PokemonReducer,
 		}),
 	],
->>>>>>> Stashed changes
 	providers: [],
 	bootstrap: [AppComponent],
 })
