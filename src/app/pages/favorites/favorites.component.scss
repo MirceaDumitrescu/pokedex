@@ -1,0 +1,12 @@
+.pokemons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	align-items: center;
+}
+
+.pokemon {
+	border: 1px solid rgba(0, 0, 0, 0.098);
+	padding: 15px;
+	border-radius: 15px;
+}
