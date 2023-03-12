@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ApiService } from "../../api/api.service";
 import { Pokemon } from "../../api/api.service";
-import { FavoritePokemonAction } from "src/app/store/models/actions/pokemons.actions";
+import { FavoritePokemonAction, FavoritePokemonActionRemove } from "src/app/store/models/actions/pokemons.actions";
 import { Store } from "@ngrx/store";
 
 @Component({
@@ -33,7 +33,7 @@ export class PokemonComponent {
 
     this.store.select("favorites").subscribe((favorites) => {
       this.favorites = favorites;
-      this.isFavorite = this.favorites.some((favorite: Pokemon) => favorite.id === this.id);
+      this.isFavorite = this.favorites.some((favorite: Pokemon) => favorite.id == this.id);
     });
 
   }
@@ -43,6 +43,6 @@ export class PokemonComponent {
   }
 
   public removeFromFavorites(pokemon: Pokemon): void {
-    this.store.dispatch(FavoritePokemonAction({ payload: pokemon }));
+    this.store.dispatch(FavoritePokemonActionRemove({ payload: pokemon }));
   }
 }

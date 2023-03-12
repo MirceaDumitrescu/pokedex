@@ -27,7 +27,7 @@ export interface Pokemon {
 export class ApiService {
   private _apiUrl = 'https://pokeapi.co/api/v2';
 
-  constructor() {}
+  constructor() { }
 
   public get<T>(query: string): Observable<T> {
     return from(fetch(`${this._apiUrl}${query}`).then((res) => res.json()));

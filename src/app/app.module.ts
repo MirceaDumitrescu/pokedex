@@ -9,18 +9,20 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FavoritesComponent } from "./pages/favorites/favorites.component";
 
 import { PokemonReducer } from "./store/reducers/favorites.reducer";
+import { FetchDataReducer } from "./store/reducers/fetchedData.reducer";
 import { StoreModule } from "@ngrx/store";
 
 @NgModule({
-	declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		StoreModule.forRoot({
-			favorites: PokemonReducer,
-		}),
-	],
-	providers: [],
-	bootstrap: [AppComponent],
+  declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot({
+      favorites: PokemonReducer,
+      fetchedData: FetchDataReducer
+    }),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
