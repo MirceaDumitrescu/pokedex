@@ -36,4 +36,8 @@ export class ApiService {
   public getPokemon(id: number): Observable<Pokemon> {
     return this.get(`/pokemon/${id}`);
   }
+
+  public getAllPokemons(): Observable<Pokemon[]> {
+    return this.get('/pokemon?limit=1281');
+  }
 }

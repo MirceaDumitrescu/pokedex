@@ -42,7 +42,7 @@ export class DataWrapperComponent implements OnInit {
     /* 
 *   * If this data doesnt contain anything fetch first page api
 * */
-    if (!this.data?.[this.currentPage].results?.length) {
+    if (!this.data?.[this.currentPage]) {
       this.fetchPokemons('/pokemon');
     }
 
