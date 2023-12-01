@@ -1,0 +1,22 @@
+<p>login works!</p>
+<div class="login-box">
+    <h1>Login</h1>
+    <div class="label-container">
+        <label for="email">Email:</label>
+        <input [(ngModel)]="email"
+         placeholder="name@example.com"
+         type="text" 
+         name="email" 
+         id="email">
+    
+    </div>
+    <div class="label-container">
+        <label for="password">Password:</label>
+        <input [(ngModel)]="password"
+         type="password"
+          name="password"
+          placeholder="*****"
+          id="password">
+    </div>
+   
+    <button type="button" (click)="handleLogin()" class="login-btn">Log in</button>

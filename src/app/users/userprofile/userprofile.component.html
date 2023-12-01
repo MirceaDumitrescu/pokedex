@@ -1,0 +1,27 @@
+
+
+<div class="edit-container">
+    <h1>User Profile</h1>
+     
+    <div class="label-container">
+        <label for="email">Email:</label>
+        <input [(ngModel)]="email"
+         placeholder="name@example.com"
+         type="text" 
+         name="email" 
+         id="email">
+    
+    </div> 
+
+    <div class="label-container">
+        <label for="password">Password:</label>
+        <input [(ngModel)]="password"
+         type="password"
+          name="password"
+          id="password">
+    </div>
+    
+    <button type="button" (click)="handleProfile()" class="update-btn">Update Profile</button>   
+
+</div>
+

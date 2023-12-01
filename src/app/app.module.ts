@@ -13,9 +13,21 @@ import { PokemonReducer } from "./store/reducers/favorites.reducer";
 import { FetchDataReducer } from "./store/reducers/fetchedData.reducer";
 import { StoreModule } from "@ngrx/store";
 import { AllPokemonsComponent } from './pages/all-pokemons/all-pokemons.component';
+import { RegisterComponent } from './users/register/register.component';
+import { LoginComponent } from './users/login/login.component';
+import { UserprofileComponent } from './users/userprofile/userprofile.component';
 
 @NgModule({
-  declarations: [AppComponent, DataWrapperComponent, PokemonComponent, NavbarComponent, FavoritesComponent, AllPokemonsComponent],
+  declarations: [AppComponent, 
+  DataWrapperComponent, 
+  PokemonComponent, 
+  NavbarComponent, 
+  FavoritesComponent, 
+  AllPokemonsComponent, 
+  RegisterComponent, 
+  LoginComponent, 
+  UserprofileComponent],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

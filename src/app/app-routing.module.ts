@@ -4,8 +4,23 @@ import { DataWrapperComponent } from "./components/data-wrapper/data-wrapper.com
 import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { AllPokemonsComponent } from "./pages/all-pokemons/all-pokemons.component";
 import { FavoritesComponent } from "./pages/favorites/favorites.component";
+import { RegisterComponent } from "./users/register/register.component";
+import { LoginComponent } from "./users/login/login.component";
+import { UserprofileComponent } from "./users/userprofile/userprofile.component";
 
 const routes: Routes = [
+  {
+    path: "register",
+    component: RegisterComponent,
+  },
+  {
+    path: "login",
+    component: LoginComponent,
+  },
+  {
+    path: "userprofile",
+    component: UserprofileComponent,
+  },
   {
     path: "",
     component: DataWrapperComponent,

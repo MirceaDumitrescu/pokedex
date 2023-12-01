@@ -1,9 +1,35 @@
+
 <nav>
+
+  <ul>  
+    <li *ngIf="!isLoggedIn">
+        <a routerLink='register' routerLinkActive='active'> Register </a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+        <a routerLink='login' routerLinkActive='active'> Login </a>        
+    </li>
+    <li *ngIf="isLoggedIn">
+        <a routerLink='userprofile' routerLinkActive='active'> User Profile </a>
+    </li>
+    <li *ngIf="isLoggedIn" (click)="handleLogOut()">
+        <a>Log out</a>
+    </li>
+  </ul> 
   <ul>
-    <li><a routerLink="/">Pokémons</a></li>
-    <li><a routerLink="/favorites">Favorites</a></li>
-  </ul>
+    <li><a routerLink="/">
+      Pokémons </a>
+    </li>
+    <li><a routerLink="/favorites">
+      Favorites</a>
+    </li>
+  </ul> 
+  
+  <div ngClass="favorites" *ngIf="userEmail">
+    Hello, {{ userEmail }}
+  </div>
+  
   <div ngClass="favorites">
     <p> NGRX: {{ favorites }}</p>
   </div>
+
 </nav>
