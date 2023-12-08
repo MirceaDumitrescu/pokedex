@@ -1,0 +1,27 @@
+<div class="container">
+    
+    <form class="login-container" #loginForm="ngForm">
+        <h1>Login</h1>    
+        <div class="label-container">
+            <label for="email">Email:</label>
+            <input [(ngModel)]="user.email" type="text" name="email" id="email"        
+            placeholder="name@example.com"
+            #email="ngModel" required minlength="5">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">                     
+                <span *ngIf="email.errors && email.errors?.['email']">Incorrect email</span>            
+            </div>
+        </div> 
+        <div class="label-container">
+            <label for="password">Password:</label>
+            <input [(ngModel)]="user.password" type="password" name="password" id="password"
+            placeholder="*****"
+            #password="ngModel" required minlength="5" >
+            <div *ngIf="password.invalid && (password.dirty || password.touched)">                      
+                <span *ngIf="password.errors && password.errors?.['password']">Incorrect password</span>            
+            </div>
+        </div> 
+        
+        <button class="login-btn" type="button" (click)="handleLogin()" [disabled]="loginForm.invalid">Login</button>
+
+    </form>
+</div>
