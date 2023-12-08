@@ -1,20 +1,27 @@
-
-<div class="register-container">
-    <h1>Register</h1>    
-    <div class="label-container">
-        <label for="email">Email:</label>
-        <input [(ngModel)]="user.email" type="text" name="email" id="email"
-        placeholder="name@example.com"
-        #email="ngModel" required>
-    </div> 
-    <div class="label-container">
-        <label for="password">Password:</label>
-        <input [(ngModel)]="user.password" type="password" name="password" id="password"
-        placeholder="*****"
-        #password="ngModel" required>
-    </div> 
+<div class="container">
     
-    <button class="register-btn" type="button" (click)="handleRegister()">Register</button>
+    <form class="register-container" #registrationForm="ngForm">
+        <h1>Register</h1>    
+        <div class="label-container">
+            <label for="email">Email:</label>
+            <input [(ngModel)]="user.email" type="text" name="email" id="email"        
+            placeholder="name@example.com"
+            #email="ngModel" required minlength="5" [ngClass]="{'red-border': !isEmailStrong() && (email.dirty || email.touched)}">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">                     
+                <span *ngIf="email.errors && email.errors?.['email']">Incorrect email</span>            
+            </div>
+        </div> 
+        <div class="label-container">
+            <label for="password">Password:</label>
+            <input [(ngModel)]="user.password" type="password" name="password" id="password"
+            placeholder="*****"
+            #password="ngModel" required minlength="5" [ngClass]="{'red-border': !isPasswordStrong() && (password.dirty || password.touched)}">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)">                      
+                <span *ngIf="password.errors && password.errors?.['password']">Incorrect password</span>            
+            </div>
+        </div> 
+        
+        <button class="register-btn" type="button" (click)="handleRegister()" [disabled]="registrationForm.invalid">Register</button>
 
-
+    </form>
 </div>

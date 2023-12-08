@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Pokemon } from 'src/app/api/api.service';
 import { AuthService } from 'src/app/auth.service';
@@ -14,20 +15,32 @@ export interface User {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
-  
-  constructor(private auth: AuthService) { }
+  user = {
+    email: '',
+    password:  '',
+  } 
+ 
+  constructor(
+    private auth: AuthService, 
+    private router: Router
+    ) { }
 
   handleLogin() {
    const userList = JSON.parse(localStorage.getItem('users') || '[]');
    const isUserExisting = userList.some((user: User) => 
-   user.email === this.email && user.password === this.password)
+   user.email === this.user.email && user.password === this.user.password)
    if (isUserExisting) {
-     this.auth.logIn(this.email);
+     this.auth.logIn(this.user.email);
      return;
    } else {
      alert('incorect data');
    }
+   if (!isUserExisting) {
+    alert('User not found');   
+    this.router.navigate(['register']);
+    return;
+  }
+   console.log();
  }
+ 
 }
